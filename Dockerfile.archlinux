@@ -9,14 +9,12 @@ ARG USER_GID=$USER_UID
 
 # Update and install packages
 RUN pacman -Syu --noconfirm --needed \
-    && git \
-    && openssh \ 
-    && sudo \
-    && vim \
-    && zsh
-
-# Clean up
-RUN find /var/cache/pacman/ -type f -delete
+    git \
+    openssh \ 
+    sudo \
+    vim \
+    zsh \
+    && find /var/cache/pacman/ -type f -delete
 
 # Setup non-root user
 RUN groupadd --gid $USER_GID ${USERNAME} \
